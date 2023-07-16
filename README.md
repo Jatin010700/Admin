@@ -18,9 +18,9 @@ Enter an ID number you want to update with the selected image
 Select an ID number you want to delete
 ```
 
-# Note:
+## Note:
 ```
 After deleting an image from the database, you'll have to add the missing ID number by uploading.
 ``` 
-# <>DEV</>
-Change proxy and when fetch to your localhost port!!!
+## <>DEV</>
+Change Proxy and Fetch to your localhost port!!!
