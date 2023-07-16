@@ -18,7 +18,7 @@ export const Update = () => {
     formData.append("image", selectedFile, selectedFile.name);
 
     try {
-      const response = await fetch(`https://car-rental-back.onrender.com/update/${id}`, {
+      const response = await fetch(`https://localhost:5000/update/${id}`, {
         method: "POST",
         body: formData,
       });
