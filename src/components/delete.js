@@ -10,7 +10,7 @@ export const Delete = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:5000/delete/${id}`, {
+      const response = await fetch(`https://car-rental-back.onrender.com/delete/${id}`, {
         method: "POST",
       });
 

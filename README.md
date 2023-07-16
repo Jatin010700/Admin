@@ -20,5 +20,7 @@ Select an ID number you want to delete
 
 # Note:
 ```
-After deleting an image from the database, you'll have to add the missing ID number by uploading
-```
+After deleting an image from the database, you'll have to add the missing ID number by uploading.
+
+Change proxy and when fetch to your localhost port!!!
+``` 

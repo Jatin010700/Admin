@@ -22,7 +22,7 @@ export const Admin = () => {
         formData.append("image", selectedFile, selectedFile.name);
         formData.append("id", id); // Add the ID to the form data
 
-        const response = await fetch("http://localhost:5000/upload", {
+        const response = await fetch("https://car-rental-back.onrender.com/upload", {
           method: "POST",
           body: formData,
         });
