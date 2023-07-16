@@ -1,0 +1,96 @@
+const express = require("express");
+const cors = require("cors");
+const knex = require("knex");
+const multer = require("multer");
+
+const DB = knex({
+  client: "pg",
+  connection: {
+    host: "localhost",
+    port: "port_number",
+    user: "database_username",
+    password: "database_password",
+    database: "database_name",
+  },
+});
+
+const upload = multer();
+const app = express();
+const port = 5000;
+
+app.use(cors()); // Enable CORS
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
+// upload image to database
+app.post("/upload", upload.single("image"), async (req, res) => {
+  try {
+    const id = req.body.id; // Retrieve the ID from the request body
+    const imageBuffer = req.file.buffer;
+    const imgName = req.file.originalname;
+
+    // Check if the ID already exists in the database
+    const existingImage = await DB('images').where('id', id).first();
+    if (existingImage) {
+      return res.status(400).json({ error: "ID already exists" });
+    }
+
+    const insertImg = await DB('images').insert({
+      id: id,
+      img_name: imgName,
+      img_data: imageBuffer,
+    });
+
+    if (!insertImg) {
+      return res.status(404).json({ error: "Image not uploaded" });
+    }
+
+    res.json({ message: "Image uploaded successfully!" });
+  } catch (err) {
+    console.error("Error occurred inserting image:", err);
+    res.status(500).json({ error: "Error occurred inserting image" });
+  }
+});
+
+// Update route
+app.post("/update/:id", upload.single("image"), async (req, res) => {
+  try {
+    const id = req.params.id;
+    const imageBuffer = req.file.buffer;
+    const imgName = req.file.originalname;
+
+    const updateImg = await DB('images')
+      .where('id', id)
+      .update({ img_name: imgName, img_data: imageBuffer });
+
+    if (updateImg === 0) {
+      return res.status(404).json({ error: "Database not Updated" });
+    }
+    return res.status(200).json({ message: "Database updated successfully." });
+  } catch (error) {
+    console.error("Error executing database query:", error);
+    return res.status(500).json({ error: "Failed to update the database." });
+  }
+});
+
+//delete image from database
+app.post('/delete/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const deleteImg = await DB('images')
+    .where('id', id)
+    .del();
+
+    if (deleteImg === 0) {
+      return res.status(404).json({ error: "Image not Deleted"})
+    }
+    return res.status(200).json({message: "Image Deleted"})
+  } catch (error) {
+    console.error("Server Error", error)
+    return res.status(500).json({ error: "Failed to delete image." });
+
+  }
+})
