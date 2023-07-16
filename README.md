@@ -22,5 +22,6 @@ Select an ID number you want to delete
 ```
 After deleting an image from the database, you'll have to add the missing ID number by uploading.
 
+<>DEV</>
 Change proxy and when fetch to your localhost port!!!
 ``` 
