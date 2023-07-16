@@ -64,7 +64,7 @@ export const Delete = () => {
               value={id}
               onChange={(e) => setId(e.target.value)}
             />
-            <button className="bg-err-red py-2 px-3 rounded-lg hover:bg-opacity-90 active:transform active:-translate-y-1/4 scale-85 duration-150">
+            <button className="bg-err-red py-2 px-3 rounded-lg hover:bg-opacity-90 active:transform active:-translate-y-1/4 scale-85  transition ease-in-out hover:-translate-y-0.5 hover:scale-105 duration-150">
               <i className="text-2xl bi bi-trash-fill"></i>
             </button>
           </form>

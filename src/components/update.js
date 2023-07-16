@@ -82,7 +82,7 @@ export const Update = () => {
           />
           <i className="text-2xl mr-2 bi bi-link"></i>
           <label className="flex gap-2">
-            <span className="bg-green-blue hover:bg-opacity-90 text-white py-2 px-4 rounded-lg cursor-pointer active:transform active:-translate-y-1/4 scale-85 duration-150">
+            <span className="bg-green-blue hover:bg-opacity-90 text-white py-2 px-4 rounded-lg cursor-pointer active:transform active:-translate-y-1/4 scale-85  transition ease-in-out hover:-translate-y-0.5 hover:scale-105 duration-150">
               <i className="text-2xl bi bi-file-earmark-text-fill"></i>
             </span>
             <input
@@ -97,13 +97,13 @@ export const Update = () => {
           <div className="flex gap-2 m-2 md:m-0">
             <button
               type="submit"
-              className="bg-Green py-2 px-3 rounded-lg hover:bg-opacity-90  active:transform active:-translate-y-1/4 scale-85 duration-150"
+              className="bg-Green py-2 px-3 rounded-lg hover:bg-opacity-90  active:transform active:-translate-y-1/4 scale-85  transition ease-in-out hover:-translate-y-0.5 hover:scale-105 duration-150"
             >
               <i className="text-2xl bi bi-cloud-arrow-up-fill"></i>
             </button>
             <button
               onClick={resetForm}
-              className="bg-err-red py-2 px-3 rounded-lg  hover:bg-opacity-90 active:transform active:-translate-y-1/4 scale-85 duration-150"
+              className="bg-err-red py-2 px-3 rounded-lg  hover:bg-opacity-90 active:transform active:-translate-y-1/4 scale-85  transition ease-in-out hover:-translate-y-0.5 hover:scale-105 duration-150"
             >
               <i className="text-2xl bi bi-arrow-clockwise"></i>
             </button>
